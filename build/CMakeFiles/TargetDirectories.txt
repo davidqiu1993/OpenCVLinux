@@ -1,1 +1,0 @@
-/home/david/Workspace/OpenCVLinux/build/CMakeFiles/../release/FaceRecognition.a.dir

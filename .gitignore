@@ -13,9 +13,9 @@
 *.a
 
 # Build Temporary files
-build/CMakeFiles
+build/CMakeFiles/
 build/CMakeFiles/*
-build/release
+build/release/
 build/release/*
 build/CMakeCache.txt
 build/cmake_install.cmake

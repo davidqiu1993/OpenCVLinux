@@ -1,6 +1,0 @@
-cmake_minimum_required(VERSION 2.8)
-project( FaceRecognition )
-find_package( OpenCV REQUIRED )
-include_directories( ${OpenCV_INCLUDE_DIRS} )
-add_executable( ../release/FaceRecognition.a ../src/FaceRecognition.cpp )
-target_link_libraries( ../release/FaceRecognition.a ${OpenCV_LIBS} )
