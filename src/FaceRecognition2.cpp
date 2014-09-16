@@ -11,7 +11,7 @@
  * Email:   dicong.qiu@intel.com
  * Website: http://www.davidqiu.com/
  *
- * Copyright (C) 2014, David Qiu.
+ * Copyright (C) 2014, David Qiu. All rights reserved.
  * 
  * This piece of code is modified from the video stream face recognition 
  * toturial of OpenCV.
