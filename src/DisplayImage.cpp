@@ -1,3 +1,14 @@
+/**
+ * Image displaying demo with OpenCV.
+ *
+ * Author:  David Qiu.
+ * Email:   david@davidqiu.com
+ * Email:   dicong.qiu@intel.com
+ * Website: http://www.davidqiu.com/
+ *
+ * Copyright (C) 2014, David Qiu. All rights reserved.
+ */
+
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
 
@@ -7,7 +18,7 @@ int main(int argc, char** argv )
 {
     if ( argc != 2 )
     {
-        printf("usage: DisplayImage.out <Image_Path>\n");
+        printf("usage: %s <Image_Path>\n", argv[0]);
         return -1;
     }
 

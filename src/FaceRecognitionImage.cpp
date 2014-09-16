@@ -1,5 +1,5 @@
 /**
-* Face recognition from image.
+* Face recognition from image file using OpenCV.
 *
 * Author:  David Qiu.
 * Email:   david@davidqiu.com
@@ -75,7 +75,7 @@ int main(int argc, const char *argv[]) {
     cout << "\t <csv>       -- Path to the CSV file with the face database." << endl;
     cout << "\t <in_image>  -- Input image to process face recognition." << endl;
     cout << "\t <out_info>  -- Output information of the face recognition result." << endl;
-    cout << "\t <out_image> -- Output image of the face recognition result." << endl;
+    cout << "\t <out_image> -- Output image of the face recognition result. (optional)" << endl;
     exit(1);
   }
 
@@ -149,16 +149,19 @@ int main(int argc, const char *argv[]) {
     double confidence = 0.0;
     int prediction = -1;
     model->predict(face_resized, prediction, confidence);
-
-    // Tag the face with a rectangle
-    rectangle(original, face_i, CV_RGB(0, 255,0), 1);
     
-    // Put the prediction information above the rectangle
-    string strName = names[prediction];
-    string box_text = format("%s [%lf]", strName.c_str(), confidence);
-    int pos_x = std::max(face_i.tl().x - 10, 0);
-    int pos_y = std::max(face_i.tl().y - 10, 0);
-    putText(original, box_text, Point(pos_x, pos_y), FONT_HERSHEY_PLAIN, 1.0, CV_RGB(0,255,0), 2.0);
+    // Check if has output image
+    if (has_outimage) {
+      // Tag the face with a rectangle
+      rectangle(original, face_i, CV_RGB(0, 255,0), 1);
+      
+      // Put the prediction information above the rectangle
+      string strName = names[prediction];
+      string box_text = format("%s [%lf]", strName.c_str(), confidence);
+      int pos_x = std::max(face_i.tl().x - 10, 0);
+      int pos_y = std::max(face_i.tl().y - 10, 0);
+      putText(original, box_text, Point(pos_x, pos_y), FONT_HERSHEY_PLAIN, 1.0, CV_RGB(0,255,0), 2.0);
+    }
 
     // Output the recognition information
     if (i>0) fprintf(outinfo, ",");
@@ -171,7 +174,7 @@ int main(int argc, const char *argv[]) {
   fprintf(outinfo, "]\n");
 
   // Ouput the recognition result image
-  imwrite(fn_outimage.c_str(), original);
+  if (has_outimage) imwrite(fn_outimage.c_str(), original);
   
   return 0;
 }

@@ -1,3 +1,19 @@
+/**
+ * Face collection application. This application helps collect
+ * facial data for face recognition.
+ *
+ * It combines face detection and image corpping functions. A 
+ * rectangle will occur on the video if any face is detected. 
+ * And the user just need to press [space] on the keyboard to 
+ * save the face image as an image file.
+ *
+ * Author:  David Qiu.
+ * Email:   david@davidqiu.com
+ * Email:   dicong.qiu@intel.com
+ * Website: http://www.davidqiu.com/
+ *
+ * Copyright (C) 2014, David Qiu. All rights reserved.
+ */
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/contrib/contrib.hpp"

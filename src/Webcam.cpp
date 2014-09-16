@@ -1,3 +1,13 @@
+/**
+ * Webcam video stream displaying demo with OpenCV.
+ *
+ * Author:  David Qiu.
+ * Email:   david@davidqiu.com
+ * Email:   dicong.qiu@intel.com
+ * Website: http://www.davidqiu.com/
+ *
+ * Copyright (C) 2014, David Qiu. All rights reserved.
+ */
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/contrib/contrib.hpp"

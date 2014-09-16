@@ -1,5 +1,10 @@
 /**
- * Face recognition from video stream using OpenCv.
+ * Face recognition and collection from video stream using OpenCV.
+ *
+ * A rectangle with the predicted name of the subject will occur on 
+ * the video if any face is detected. And if the prediction does not 
+ * match actual user, one just need to press [space] on keyboard to 
+ * save the current face image as an image file.
  *
  * Author:  David Qiu.
  * Email:   david@davidqiu.com

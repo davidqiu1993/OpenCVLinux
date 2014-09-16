@@ -1,3 +1,16 @@
+/**
+ * Face detection application. This application perform face 
+ * detection from an image file. The detection result will be 
+ * displayed on the screen as an processed image.
+ *
+ * Author:  David Qiu.
+ * Email:   david@davidqiu.com
+ * Email:   dicong.qiu@intel.com
+ * Website: http://www.davidqiu.com/
+ *
+ * Copyright (C) 2014, David Qiu. All rights reserved.
+ */
+
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
 #include <stdio.h>
@@ -17,7 +30,7 @@ int main(int argc, char** argv)
   // Read the data file locations
   if (argc < 3)
   {
-    fprintf(stderr, "ERROR: Please run ./<app> <cascade_name> <image_name>");
+    fprintf(stderr, "ERROR: Please run %s <cascade_name> <image_name>", argv[0]);
   }
   cascade_name = argv[1];
   image_name = argv[2];
