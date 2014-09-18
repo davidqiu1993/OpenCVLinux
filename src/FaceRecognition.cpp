@@ -45,6 +45,9 @@
 using namespace cv;
 using namespace std;
 
+const int STD_FACE_WIDTH  = 64;
+const int STD_FACE_HEIGHT = 64;
+
 static void read_csv(const string& filename, vector<Mat>& images, vector<int>& labels, map<int, string>& names, char separator = ';') {
     std::ifstream file(filename.c_str(), ifstream::in);
     if (!file) {
@@ -58,7 +61,9 @@ static void read_csv(const string& filename, vector<Mat>& images, vector<int>& l
         getline(liness, classlabel, separator);
         getline(liness, classname);
         if(!path.empty() && !classlabel.empty() && !classname.empty()) {
-            images.push_back(imread(path, 0));
+            Mat face_resized;
+            cv::resize(imread(path,0), face_resized, Size(STD_FACE_WIDTH, STD_FACE_HEIGHT), 1.0, 1.0, INTER_CUBIC);
+            images.push_back(face_resized);
             labels.push_back(atoi(classlabel.c_str()));
             names.insert( pair<int, string>(atoi(classlabel.c_str()), classname) );
         }

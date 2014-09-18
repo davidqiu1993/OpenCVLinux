@@ -47,6 +47,10 @@
 using namespace cv;
 using namespace std;
 
+const int STD_FACE_WIDTH  = 64;
+const int STD_FACE_HEIGHT = 64;
+
+
 static void read_csv(const string& filename, vector<Mat>& images, vector<int>& labels, map<int, string>& names, char separator = ';') {
   std::ifstream file(filename.c_str(), ifstream::in);
   if (!file) {
@@ -60,7 +64,9 @@ static void read_csv(const string& filename, vector<Mat>& images, vector<int>& l
     getline(liness, classlabel, separator);
     getline(liness, classname);
     if(!path.empty() && !classlabel.empty() && !classname.empty()) {
-      images.push_back(imread(path, 0));
+      Mat face_resized;
+      cv::resize(imread(path,0), face_resized, Size(STD_FACE_WIDTH, STD_FACE_HEIGHT), 1.0, 1.0, INTER_CUBIC);
+      images.push_back(face_resized);
       labels.push_back(atoi(classlabel.c_str()));
       names.insert( pair<int, string>(atoi(classlabel.c_str()), classname) );
     }
@@ -149,17 +155,17 @@ int main(int argc, const char *argv[]) {
     double confidence = 0.0;
     int prediction = -1;
     model->predict(face_resized, prediction, confidence);
-    
+    string strName = names[prediction];
+     
     // Check if has output image
     if (has_outimage) {
       // Tag the face with a rectangle
       rectangle(original, face_i, CV_RGB(0, 255,0), 1);
       
       // Put the prediction information above the rectangle
-      string strName = names[prediction];
-      string box_text = format("%s [%lf]", strName.c_str(), confidence);
       int pos_x = std::max(face_i.tl().x - 10, 0);
       int pos_y = std::max(face_i.tl().y - 10, 0);
+      string box_text = format("%s [%lf]", strName.c_str(), confidence);
       putText(original, box_text, Point(pos_x, pos_y), FONT_HERSHEY_PLAIN, 1.0, CV_RGB(0,255,0), 2.0);
     }
 
@@ -168,8 +174,8 @@ int main(int argc, const char *argv[]) {
     fprintf(outinfo, "{\"prediction\":\"%s\",\"confidence\":%lf,\"pos_x\":%d,\"pos_y\":%d}", 
       strName.c_str(), 
       confidence, 
-      pos_x,
-      pos_y);
+      face_i.tl().x,
+      face_i.tl().y);
   }
   fprintf(outinfo, "]\n");
 
