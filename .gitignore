@@ -12,6 +12,9 @@
 *.la
 *.a
 
+# Temperary files
+*~
+
 # Build Temporary files
 build/CMakeFiles/
 build/CMakeFiles/*

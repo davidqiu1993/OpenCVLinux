@@ -106,7 +106,7 @@ the following command.
 `./generate.sh Webcam`
 
 The letter case should be considered, and after running the above 
-command, the corresponding executable program `Webcam.a` will be 
+command, the corresponding executable program `Webcam.out` will be 
 generated in the `release/` directory.
 
 ## Application Usages
@@ -121,7 +121,7 @@ them in wrong ways.
 This application shows how to display load an image from file and 
 display it with OpenCV. The usage is 
 
-`./DisplayImage.a <image_path>`
+`./DisplayImage.out <image_path>`
 
 Where the argument `<image_path>` is the file path of the image 
 file to display.
@@ -131,7 +131,7 @@ file to display.
 Webcam video stream displaying demo with OpenCV. The usage is as 
 follows.
 
-`./Webcam.a <device_id>`
+`./Webcam.out <device_id>`
 
 Where the argument `<device_id>` is the video device identifier to 
 use. Usually it is `0` if only one webcam connects to the machine.
@@ -142,7 +142,7 @@ This application perform face detection from an image file. The
 detection result will be displayed on the screen as an processed 
 image. The usage is as follows.
 
-`./FaceDetectionImage.a <cascade_name> <image_name>`
+`./FaceDetectionImage.out <cascade_name> <image_name>`
 
 Where
 
@@ -156,7 +156,7 @@ Where
 This application helps collect facial data for face recognition. 
 Its usage is as follows.
 
-`./FaceCollection <cascade_name> <device_id>`
+`./FaceCollection.out <cascade_name> <device_id>`
 
 Where
 
@@ -184,7 +184,7 @@ within the source code of the script.
 This application performs face recognition from video stream using 
 OpenCV. Its usage is as follows.
 
-`./FaceRecognition.a <cascade> <csv> <device_id>`
+`./FaceRecognition.out <cascade> <csv> <device_id>`
 
 Where
 
@@ -203,7 +203,7 @@ Where
 This application is a combination of face recognition and face 
 collection from video stream using OpenCV. Below is the usage.
 
-`./FaceRecognition2.a <cascade> <csv> <device_id>`
+`./FaceRecognition2.out <cascade> <csv> <device_id>`
 
 Where
 
@@ -230,7 +230,7 @@ to the face database.
 This application performs face recognition from image file using 
 OpenCV. The usage is as follows.
 
-`./FaceRecognitionImage <cascade> <csv> <in_image> <out_info> [<out_image>]`
+`./FaceRecognitionImage.out <cascade> <csv> <in_image> <out_info> [<out_image>]`
 
 Where 
 
